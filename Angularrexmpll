@@ -1,0 +1,93 @@
+Theory Notes for Explanation
+1.	What is AngularJS?
+
+○	AngularJS is a JavaScript framework developed by Google.
+
+○	It extends HTML with directives and binds data to HTML using two-way data binding.
+
+○	Useful for building dynamic single-page applications (SPAs).
+
+2.	Form in AngularJS
+
+○	AngularJS provides ng-model directive for two-way binding between input fields and application data.
+
+○	Forms use AngularJS validation directives like:
+
+■	required → ensures input is not empty
+
+■	ng-minlength / ng-maxlength → validate input length
+
+■	ng-pattern → validate using regex (e.g., email, phone)
+
+■	$dirty, $touched, $valid → form state indicators
+
+3.	Dynamic Forms
+
+○	Fields can be generated dynamically from an array of objects.
+
+○	AngularJS automatically binds and validates them.
+
+4.	Validation Messages
+
+○	AngularJS gives form states ($invalid, $pristine, $dirty).
+
+○	We can show error messages dynamically when a user enters invalid input.
+
+________________________________________
+Example Program (AngularJS Form with Validation)
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AngularJS Dynamic Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+  <style>
+    .error { color: red; font-size: 14px; }
+  </style>
+</head>
+<body ng-app="formApp" ng-controller="formCtrl">
+
+  <h2>Student Registration Form</h2>
+  <form name="studentForm" novalidate>
+
+    <!-- Dynamic Form Fields -->
+    <div ng-repeat="field in formFields">
+      <label>{{field.label}}:</label>
+      <input type="{{field.type}}" 
+             name="{{field.name}}" 
+             ng-model="student[field.name]" 
+             ng-required="field.required"
+             ng-minlength="field.minLength"
+             ng-pattern="field.pattern" />
+
+      <!-- Validation Messages -->
+      <span class="error" ng-show="studentForm[field.name].$dirty && studentForm[field.name].$invalid">
+        <span ng-show="studentForm[field.name].$error.required">{{field.label}} is required.</span>
+        <span ng-show="studentForm[field.name].$error.minlength">{{field.label}} is too short.</span>
+        <span ng-show="studentForm[field.name].$error.pattern">Invalid {{field.label}} format.</span>
+      </span>
+      <br><br>
+    </div>
+
+    <button type="submit" ng-disabled="studentForm.$invalid">Submit</button>
+  </form>
+
+  <h3>Form Data Preview:</h3>
+  <pre>{{student | json}}</pre>
+
+  <script>
+    var app = angular.module("formApp", []);
+    app.controller("formCtrl", function($scope) {
+      $scope.formFields = [
+        {label: "Name", name: "name", type: "text", required: true, minLength: 3},
+        {label: "Email", name: "email", type: "email", required: true, pattern: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/},
+        {label: "Age", name: "age", type: "number", required: true}
+      ];
+      $scope.student = {};
+    });
+  </script>
+
+</body>
+</html>
+
+________________________________________
+ 
