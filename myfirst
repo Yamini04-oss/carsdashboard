@@ -1,0 +1,142 @@
+e.	Home, Login, Catalog, Registration
+
+1. home.html – Home Page
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Web Portal - Home</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; }
+        header { background-color: #333; color: white; padding: 10px 0; text-align: center; }
+        nav { background-color: #444; padding: 10px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        main { padding: 20px; }
+        footer { background-color: #333; color: white; text-align: center; padding: 15px; position: fixed; bottom: 0; width: 100%; }
+    </style>
+</head>
+<body>
+    <header><h1>Welcome to My Web Portal</h1></header>
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="register.html">Register</a>
+    </nav>
+    <main>
+        <h2>About This Site</h2>
+        <p>This is a demo website created using HTML and CSS as part of the Web Technologies Lab.</p>
+    </main>
+    <footer>2025 Stanley College of Engineering and Technology for Women</footer>
+</body>
+</html>
+
+
+2. login.html – Login Page
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        body { font-family: Arial; background: #eef; padding: 30px; }
+        form { background: #fff; padding: 20px; max-width: 400px; margin: auto; border-radius: 8px; box-shadow: 0 0 10px #ccc; }
+        input { width: 100%; padding: 10px; margin: 10px 0; }
+        input[type="submit"] { background-color: #333; color: white; border: none; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #555; }
+    </style>
+</head>
+<body>
+    <h2 align="center">Login Page</h2>
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Login">
+        <p><a href="home.html">Back to Home</a></p>
+    </form>
+</body>
+</html>
+
+
+3. catalog.html – Catalog Page
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Catalog</title>
+    <style>
+        body { font-family: Arial; background: #f0f0f0; padding: 20px; }
+        .catalog-item {
+            background: #fff; padding: 15px; margin: 15px auto;
+            border-radius: 8px; max-width: 500px; box-shadow: 0 0 8px #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h2 align="center">Product Catalog</h2>
+    <div class="catalog-item">
+        <h3>Product 1</h3>
+        <p>Description of Product 1. Price: ₹500</p>
+    </div>
+    <div class="catalog-item">
+        <h3>Product 2</h3>
+        <p>Description of Product 2. Price: ₹800</p>
+    </div>
+    <div class="catalog-item">
+        <h3>Product 3</h3>
+        <p>Description of Product 3. Price: ₹1200</p>
+    </div>
+    <p align="center"><a href="home.html">Back to Home</a></p>
+</body>
+</html>
+
+
+4. register.html – Registration Page
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+    <style>
+        body { font-family: Arial; background: #eef; padding: 30px; }
+        form { background: #fff; padding: 20px; max-width: 400px; margin: auto; border-radius: 8px; box-shadow: 0 0 10px #ccc; }
+        input { width: 100%; padding: 10px; margin: 10px 0; }
+        input[type="submit"] { background-color: #333; color: white; border: none; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #555; }
+    </style>
+</head>
+<body>
+    <h2 align="center">Registration Page</h2>
+    <form>
+        <label for="fullname">Full Name:</label>
+        <input type="text" id="fullname" name="fullname" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <label for="confirmpassword">Confirm Password:</label>
+        <input type="password" id="confirmpassword" name="confirmpassword" required>
+        <input type="submit" value="Register">
+        <p><a href="home.html">Back to Home</a></p>
+    </form>
+</body>
+</html>
+OUTPUT:WElcome 
+login registration 
+product
+ 
+
+ 
+
+ 
+
+ 
+
+
