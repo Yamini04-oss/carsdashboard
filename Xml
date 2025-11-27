@@ -1,0 +1,136 @@
+. XML Schema and XSLT transformation
+
+a. Parse student or product data and transform to HTML
+
+Step 1: Example XML Data (Students)
+<?xml version="1.0" encoding="UTF-8"?>
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="students.xsd">
+  <student>
+    <id>101</id>
+    <name>Rahul</name>
+    <course>Computer Science</course>
+    <marks>85</marks>
+  </student>
+  <student>
+    <id>102</id>
+    <name>Anjali</name>
+    <course>Electronics</course>
+    <marks>90</marks>
+  </student>
+</students>
+
+Step 2: XML Schema (XSD) – students.xsd
+This defines the structure & rules for the XML.
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="students">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="student" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" type="xs:integer"/>
+              <xs:element name="name" type="xs:string"/>
+              <xs:element name="course" type="xs:string"/>
+              <xs:element name="marks" type="xs:integer"/>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+Step 3: XSLT Transformation – students.xsl
+This will transform XML → HTML table.
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+      xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:template match="/">
+    <html>
+      <head>
+        <title>Student Data</title>
+        <style>
+          table { border-collapse: collapse; width: 60%; }
+          th, td { border: 1px solid black; padding: 8px; text-align: center; }
+          th { background-color: #f2f2f2; }
+        </style>
+      </head>
+      <body>
+        <h2>Student Records</h2>
+        <table>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Marks</th>
+          </tr>
+          <xsl:for-each select="students/student">
+            <tr>
+              <td><xsl:value-of select="id"/></td>
+              <td><xsl:value-of select="name"/></td>
+              <td><xsl:value-of select="course"/></td>
+              <td><xsl:value-of select="marks"/></td>
+            </tr>
+          </xsl:for-each>
+        </table>
+      </body>
+    </html>
+  </xsl:template>
+
+</xsl:stylesheet>
+
+Step 4: Linking XML with XSLT
+Add this line at the top of students.xml:
+<?xml-stylesheet type="text/xsl" href="students.xsl"?>
+
+So, the updated students.xml will look like:
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="students.xsl"?>
+<students xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="students.xsd">
+  <student>
+    <id>101</id>
+    <name>Rahul</name>
+    <course>Computer Science</course>
+    <marks>85</marks>
+  </student>
+  <student>
+    <id>102</id>
+    <name>Anjali</name>
+    <course>Electronics</course>
+    <marks>90</marks>
+  </student>
+</students>
+
+ 
+1) Set up your files (same folder)
+Create a folder, e.g. XML_XSLT_Demo, and save all three files inside it:
+●	students.xml (your XML with the xml-stylesheet line)
+
+●	students.xsd (the schema)
+
+●	students.xsl (the transform)
+In VS Code:
+●	Go to File → Open Folder
+
+●	Select your project folder.
+
+●	Now you’ll see your files listed in the Explorer (left sidebar).
+ Step 3: Install the Live Server Extension
+Step 4: Run Your Program
+1.	Open the file you want to run (example: index.html or students.xml).
+
+2.	Right-click anywhere in the editor window.
+
+3.	Select 👉 “Open with Live Server”.
+
+4.	A browser window will open with an address like:
+
+http://127.0.0.1:5500/index.html
+
+ 
+When you click on student.xml the output in browser as follows
