@@ -413,6 +413,9 @@ header("Location: login.php");
 }
 ?>
 OUTPUT:
+C:\xampp\htdocs\myproject\connect.php
+http://localhost/myproject/Createdb.php
+
   
 
 
